@@ -1,0 +1,17 @@
+function pairwise(arr, arg) {
+  
+  var sum = arr.reduce(function(acc,cur,idx,arr){    
+    if(arr.indexOf(arg-cur,idx+1) != -1){//避免重复使用：将使用过的值改为-1      
+      acc += idx + arr.indexOf(arg-cur,idx+1);
+      arr[idx]=-1;
+      arr[arr.indexOf(arg-cur,idx+1)]=-1;
+      return acc;
+    }
+    
+    return acc;
+  },0);
+  
+  return sum;
+}
+
+pairwise([1, 1, 1], 2);
